@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Sofisticado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="/imagenslogo">Restaurante Premium</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <video autoplay muted loop class="background-video">
+            <source src="imagens/video" type="video/mp4"> <!-- Corrigido o caminho do vídeo -->
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Experiência Gastronômica</h1>
+            <p>Um sabor inesquecível em cada prato.</p>
+            <a href="#reservas">Reserve Agora</a>
+        </div>
+    </section>
+    
+
+    <section class="menu" id="menu">
+        <div class="menu-header">
+            <h2>Nosso Menu</h2>
+            <p>Explore os sabores únicos preparados com os melhores ingredientes.</p>
+        </div>
+        <div class="menu-categories">
+            <button class="menu-btn active" data-category="entradas">Entradas</button>
+            <button class="menu-btn" data-category="principais">Pratos Principais</button>
+            <button class="menu-btn" data-category="sobremesas">Sobremesas</button>
+            <button class="menu-btn" data-category="bebidas">Bebidas</button>
+        </div>
+        <div class="menu-items">
+            <!-- Exemplo de Categoria: Entradas -->
+            <div class="menu-category" id="entradas">
+                <div class="menu-item">
+                    <img src="imagens/carpaccio-de-salmao.webp" alt="Entrada 1">
+                    <h3>Carpaccio de Salmão</h3>
+                    <p>Finamente temperado com limão e ervas frescas.</p>
+                    <span>9,50€</span>
+                </div>
+                <div class="menu-item">
+                    <img src="imagens/bruschetta classsica" alt="Entrada 2">
+                    <h3>Bruschetta Clássica</h3>
+                    <p>Tomates frescos, manjericão e azeite de oliva.</p>
+                    <span>6,50€</span>
+                </div>
+            </div>
+            <!-- Outras Categorias -->
+            <div class="menu-category hidden" id="principais">
+                <div class="menu-item">
+                    <img src="imagens/risote de cogumelos" alt="Prato Principal 1">
+                    <h3>Risoto de Cogumelos</h3>
+                    <p>Com um toque de trufas negras.</p>
+                    <span>15,50€</span>
+                </div>
+                <div class="menu-item">
+                    
+                <img src="imagens/Filé ao Molho Poivre" alt="Prato Principal 2">
+                    <h3>Filé ao Molho Noir</h3>
+                    <p>Acompanhado de batatas rústicas.</p>
+                    <span>18,00€</span>
+
+                </div>
+            </div>
+            <div class="menu-category hidden" id="sobremesas">
+                <div class="menu-item">
+                    <img src="imagens/Petit Gâteau" alt="Sobremesa 1">
+                    <h3>Petit Gâteau</h3>
+                    <p>Servido com gelado de baunilha.</p>
+                    <span>8,00€</span>
+                </div>
+            </div>
+            <div class="menu-category hidden" id="bebidas">
+                <div class="menu-item">
+                    <img src="/imagens/Mojito" alt="Bebida 1">
+                    <h3>Mojito</h3>
+                    <p>Refrescante e saboroso.</p>
+                    <span>4,50€</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.menu-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover a classe "active" de todos os botões
+                document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+    
+                // Adicionar a classe "active" ao botão clicado
+                button.classList.add('active');
+    
+                // Ocultar todas as categorias
+                document.querySelectorAll('.menu-category').forEach(category => category.classList.add('hidden'));
+    
+                // Mostrar a categoria correspondente
+                const categoryId = button.getAttribute('data-category');
+                document.getElementById(categoryId).classList.remove('hidden');
+            });
+        });
+    </script>
+
+    <section class="reservas" id="reservas">
+    <div class="reservas-header">
+        <h2>Faça sua Reserva</h2>
+        <p>Reserve sua mesa de forma simples e rápida.</p>
+    </div>
+    <form class="reservas-form">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+        </div>
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
+        </div>
+        <div class="form-group">
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" name="horario" required>
+        </div>
+        <div class="form-group">
+            <label for="pessoas">Número de Pessoas</label>
+            <select id="pessoas" name="pessoas" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="1">1 Pessoa</option>
+                <option value="2">2 Pessoas</option>
+                <option value="3">3 Pessoas</option>
+                <option value="4">4 Pessoas</option>
+                <option value="5">5 Pessoas</option>
+                <option value="6">6+ Pessoas</option>
+            </select>
+        </div>
+        <button type="submit" class="reservas-btn">Reservar</button>
+    </form>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="sobre" id="sobre">
+    <div class="sobre-header">
+        <h2>Sobre Nós</h2>
+        <p>Somos um restaurante dedicado a oferecer uma experiência gastronómica única e memorável.
+            No Restaurante Premium, a nossa paixão pela boa comida e pelo serviço de excelência reflete-se em cada prato que servimos. Criamos um ambiente sofisticado e acolhedor, perfeito para qualquer ocasião, onde cada detalhe é pensado para proporcionar momentos especiais. Os nossos chefs, com anos de experiência, selecionam os melhores ingredientes e combinam-os com a criatividade, para trazer até à sua mesa sabores inovadores e irresistíveis. Queremos que se sinta em casa, desfrutando de uma refeição que vai além do esperado..</p>
+    </div>
+    <div class="sobre-content">
+        <div class="sobre-texto">
+            
+        <div class="sobre-imagem">
+            <img src="/imagens/logo2-removebg-preview.png" alt="Restaurante Premium">
+        </div>
+    </div>
+    </section>
+
+    <section class="contato" id="contato">
+        <div class="contato-header">
+            <h2>Entre em Contato</h2>
+            <p>Fale conosco para mais informações ou para reservas especiais.</p>
+        </div>
+    
+        <div class="contato-content">
+            <!-- Imagem à esquerda -->
+            <div class="contato-left">
+                <img src="/imagens/gourmet8" alt="Imagem de contato" />
+            </div>
+    
+            <form class="contato-form">
+                <div class="form-group">
+                    <label for="nome-contato">Nome</label>
+                    <input type="text" id="nome-contato" name="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email-contato">E-mail</label>
+                    <input type="email" id="email-contato" name="email" placeholder="Seu e-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem..." required></textarea>
+                </div>
+                <button type="submit" class="contato-btn">Enviar Mensagem</button>
+            </form>
+    
+            <!-- Imagem à direita -->
+            <div class="contato-right">
+                <img src="/imagens/gourmet9" alt="Imagem adicional" />
+            </div>
+        </div>
+    </section>
+    
+
+    <script>// Navegação suave entre as seções
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
+
+<footer>
+    <div class="footer-content">
+        <img src="/imagens/logo-removebg-preview.png" alt="Logo do Restaurante Premium" class="footer-logo">
+        <p>&copy; 2024 Restaurante Premium. Todos os direitos reservados.</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</body>
+</html>
